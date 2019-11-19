@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/insert_menu"
+        android:orderInCategory="100"
+        android:title="增加单词" />
+
+    <item
+        android:id="@+id/update_menu"
+        android:orderInCategory="100"
+        android:title="修改单词" />
+
+    <item
+        android:id="@+id/delate_menu"
+        android:orderInCategory="100"
+        android:title="删除单词" />
+
+    <item
+        android:id="@+id/search_menu"
+        android:orderInCategory="100"
+        android:title="查询单词" />
+</menu>
