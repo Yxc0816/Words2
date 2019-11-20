@@ -19,4 +19,8 @@
         android:id="@+id/search_menu"
         android:orderInCategory="100"
         android:title="查询单词" />
+    <item
+        android:id="@+id/help_menu"
+        android:orderInCategory="100"
+        android:title="帮助" />
 </menu>

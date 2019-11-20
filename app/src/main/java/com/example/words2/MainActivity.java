@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 insert();
                 return true;
             case R.id.update_menu:
+                update();
+                return true;
 
             case R.id.delate_menu:
                 delete();
@@ -57,9 +60,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.search_menu:
                 search();
                 return true;
+            case R.id.help_menu:
+                help();
+                return true;
 
         }
         return true;
+    }
+
+    private void help() {
+        AlertDialog.Builder dialog= new AlertDialog.Builder(MainActivity.this);
+        dialog.setTitle("帮助：");
+        dialog.setMessage("单词本进行增删改查"+"\n"+"横屏也可使用");
+        dialog.setPositiveButton("确定",null).show();
     }
 
 
@@ -115,6 +128,44 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+    private void update() {
+        LayoutInflater factory= LayoutInflater.from(MainActivity.this);
+        final View textEntryView = factory.inflate(R.layout.dialog2,null);
+        final EditText editText=(EditText)findViewById(R.id.update_edittext);
+        final EditText editTextexl=(EditText)findViewById(R.id.update_exl);
+        final EditText editTextexp=(EditText)findViewById(R.id.update_exp);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("修改单词");
+        builder.setView(textEntryView);
+        builder.setPositiveButton("修改", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                try {
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+                    String string1= editText.getText().toString();
+                    String string2= editTextexl.getText().toString();
+                    String string3= editTextexp.getText().toString();
+                    ContentValues values = new ContentValues();
+                    values.put("id", editText.getText().toString());
+                    values.put("exl", editTextexl.getText().toString());
+                    values.put("exl", editTextexp.getText().toString());
+                    db.update("Word", values, "id = ?", new String[]{string1,string2,string3});
+                    Toast.makeText(MainActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
+                    queryAll();
+                }catch (Exception e){
+                    Toast.makeText(MainActivity.this,"修改失败",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+
     }
 
     private void insert() {

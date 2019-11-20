@@ -45,5 +45,15 @@ public class searchActivity extends AppCompatActivity {
                     Toast.makeText(searchActivity.this,"没有找到",Toast.LENGTH_LONG).show();
             }
         });
+        Button button1=(Button)findViewById(R.id.back);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(searchActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
 }

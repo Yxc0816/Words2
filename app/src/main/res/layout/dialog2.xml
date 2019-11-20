@@ -4,23 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <EditText
-        android:id="@+id/inset_edittext"
-        android:layout_width="0dp"
-        android:layout_weight="5"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入单词"
-        android:textColorHint="#CCCCCC"/>
-
-</LinearLayout>
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/update_edittext"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:hint="请输入修改的单词"
+            android:textColorHint="#CCCCCC"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/inset_exl"
+            android:id="@+id/update_exl"
             android:layout_width="0dp"
             android:layout_weight="5"
             android:layout_height="wrap_content"
@@ -31,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/inset_exp"
+            android:id="@+id/update_exp"
             android:layout_width="0dp"
             android:layout_weight="10"
             android:layout_height="wrap_content"
